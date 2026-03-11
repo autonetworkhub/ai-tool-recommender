@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Tool Recommender 2026 — Find Your Perfect AI Stack in 60 Seconds</title>
+<meta name="description" content="Answer 3 questions. Get your exact AI tool stack. Free tool for freelancers, marketers, developers, and creators."/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080f;--s:#11131e;--card:#161929;--border:#222840;
+  --blue:#5b8cff;--lblue:#0d1530;--green:#00d68f;--lgreen:#041f14;
+  --pur:#a78bfa;--lpur:#130f25;--orange:#fb923c;--lorange:#1f0f05;
+  --text:#dde4f7;--dim:#5a6585;--white:#ffffff;
+}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;padding:0 16px 60px}
+.hero{text-align:center;padding:52px 16px 36px;max-width:600px;margin:0 auto}
+.badge{display:inline-block;background:var(--lblue);color:var(--blue);font-size:11px;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;margin-bottom:16px;text-transform:uppercase}
+h1{font-size:clamp(26px,5vw,44px);font-weight:800;color:var(--white);line-height:1.1}
+h1 em{color:var(--blue);font-style:normal}
+.sub{color:var(--dim);font-size:15px;margin-top:12px;line-height:1.6}
+.progress{display:flex;gap:8px;justify-content:center;margin:28px 0 0;padding:0 20px}
+.step{flex:1;max-width:120px;height:4px;border-radius:2px;background:var(--border);transition:background .3s}
+.step.active{background:var(--blue)}
+.step.done{background:var(--green)}
+.q-wrap{max-width:560px;margin:24px auto 0;display:none}
+.q-wrap.show{display:block;animation:up .3s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.q-num{font-size:11px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.q-text{font-size:20px;font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.3}
+.opt{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:inherit;font-size:14px;font-weight:500;padding:14px 18px;cursor:pointer;text-align:left;margin-bottom:10px;transition:all .2s;display:flex;align-items:center;gap:12px}
+.opt:hover{border-color:var(--blue);background:var(--lblue);transform:translateX(4px)}
+.opt-icon{font-size:20px;flex-shrink:0}
+.results-wrap{max-width:600px;margin:24px auto 0;display:none}
+.results-wrap.show{display:block;animation:up .3s ease}
+.results-title{font-size:22px;font-weight:800;color:var(--white);margin-bottom:4px}
+.results-sub{color:var(--dim);font-size:14px;margin-bottom:20px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px;transition:border-color .2s}
+.tool-card:hover{border-color:var(--blue)}
+.tool-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+.tool-icon{font-size:28px;flex-shrink:0}
+.tool-name{font-size:16px;font-weight:700;color:var(--white)}
+.tool-why{font-size:12px;color:var(--dim);margin-top:2px;line-height:1.5}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px}
+.tag.free{background:var(--lgreen);color:var(--green)}
+.tag.paid{background:var(--lpur);color:var(--pur)}
+.tag.top{background:var(--lblue);color:var(--blue)}
+.tool-cta{display:inline-block;background:var(--blue);color:#000;font-weight:700;font-size:13px;padding:9px 20px;border-radius:8px;text-decoration:none;transition:all .2s}
+.tool-cta:hover{background:#7aa8ff;transform:translateY(-1px)}
+.upsell-bar{background:linear-gradient(135deg,var(--lpur),var(--lgreen));border:1px solid var(--pur);border-radius:14px;padding:22px;text-align:center;margin-top:6px}
+.upsell-bar h3{color:var(--white);font-size:16px;margin-bottom:6px}
+.upsell-bar p{color:var(--dim);font-size:13px;margin-bottom:14px;line-height:1.5}
+.upsell-bar a{background:var(--green);color:#000;font-weight:700;font-size:13px;padding:10px 22px;border-radius:8px;text-decoration:none;display:inline-block}
+.restart{background:none;border:1px solid var(--border);color:var(--dim);font-family:inherit;font-size:12px;padding:8px 16px;border-radius:8px;cursor:pointer;margin-top:14px;display:block;margin:14px auto 0}
+.restart:hover{border-color:var(--text);color:var(--text)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">⚡ Free Tool · 60 Seconds</div>
+  <h1>Find Your <em>Perfect</em><br/>AI Stack in 60 Seconds</h1>
+  <p class="sub">3 questions. Your exact AI toolkit — matched to your profession and biggest time-wasters.</p>
+</div>
+
+<div class="progress">
+  <div class="step active" id="s1"></div>
+  <div class="step" id="s2"></div>
+  <div class="step" id="s3"></div>
+</div>
+
+<!-- Q1 -->
+<div class="q-wrap show" id="q1">
+  <div class="q-num">Question 1 of 3</div>
+  <div class="q-text">What best describes your work?</div>
+  <button class="opt" onclick="ans(1,'writer')"><span class="opt-icon">✍️</span> Writer, copywriter, or content creator</button>
+  <button class="opt" onclick="ans(1,'designer')"><span class="opt-icon">🎨</span> Designer, illustrator, or creative</button>
+  <button class="opt" onclick="ans(1,'developer')"><span class="opt-icon">💻</span> Developer or technical builder</button>
+  <button class="opt" onclick="ans(1,'marketer')"><span class="opt-icon">📈</span> Marketer, SEO, or growth specialist</button>
+  <button class="opt" onclick="ans(1,'consultant')"><span class="opt-icon">🤝</span> Consultant, coach, or service provider</button>
+  <button class="opt" onclick="ans(1,'operator')"><span class="opt-icon">⚙️</span> Ops, VA, or business owner</button>
+</div>
+
+<!-- Q2 -->
+<div class="q-wrap" id="q2">
+  <div class="q-num">Question 2 of 3</div>
+  <div class="q-text">What's your biggest time drain right now?</div>
+  <button class="opt" onclick="ans(2,'writing')"><span class="opt-icon">📝</span> Writing and editing takes forever</button>
+  <button class="opt" onclick="ans(2,'research')"><span class="opt-icon">🔍</span> Research eats my whole morning</button>
+  <button class="opt" onclick="ans(2,'comms')"><span class="opt-icon">📧</span> Client emails and proposals</button>
+  <button class="opt" onclick="ans(2,'admin')"><span class="opt-icon">📋</span> Admin, scheduling, and repetitive tasks</button>
+  <button class="opt" onclick="ans(2,'content')"><span class="opt-icon">📱</span> Creating consistent social content</button>
+</div>
+
+<!-- Q3 -->
+<div class="q-wrap" id="q3">
+  <div class="q-num">Question 3 of 3</div>
+  <div class="q-text">What's your priority right now?</div>
+  <button class="opt" onclick="ans(3,'speed')"><span class="opt-icon">⚡</span> Work faster — same quality, fewer hours</button>
+  <button class="opt" onclick="ans(3,'quality')"><span class="opt-icon">🏆</span> Produce higher quality work</button>
+  <button class="opt" onclick="ans(3,'scale')"><span class="opt-icon">📊</span> Take on more clients without burning out</button>
+  <button class="opt" onclick="ans(3,'income')"><span class="opt-icon">💰</span> Increase what I charge per project</button>
+</div>
+
+<!-- RESULTS -->
+<div class="results-wrap" id="results">
+  <div class="results-title">Your AI Stack ✓</div>
+  <div class="results-sub" id="res-sub">Matched to your answers.</div>
+  <div id="tool-list"></div>
+  <div class="upsell-bar">
+    <h3>Get the exact workflows for these tools</h3>
+    <p>30 copy-paste AI workflow templates — one for every major freelance task. Built around the tools above.</p>
+    <!-- REPLACE WITH YOUR GUMROAD LINK -->
+    <a href="https://gumroad.com/YOUR_PRODUCT_LINK" target="_blank">Get The Freelancer's AI Stack — $37 →</a>
+  </div>
+  <button class="restart" onclick="restart()">↺ Start over</button>
+</div>
+
+<script>
+let answers = {};
+
+const TOOLS = {
+  claude:     { icon:'🤖', name:'Claude AI', tag:'paid', label:'TOP PICK', why:'Best for long-form writing, complex reasoning, and professional communications. Outperforms GPT-4 for nuanced copy.', cta:'Try Claude Pro →', url:'https://claude.ai' },
+  notion:     { icon:'📒', name:'Notion AI', tag:'free', label:'FREE PLAN', why:'All-in-one workspace with AI drafting, summarization, and database automation. Best free-tier AI productivity tool.', cta:'Get Notion Free →', url:'https://notion.so' },
+  perplexity: { icon:'🔎', name:'Perplexity AI', tag:'free', label:'FREE PLAN', why:'Real-time AI search with citations. Replaces hours of manual research with verified, sourced answers in seconds.', cta:'Try Perplexity →', url:'https://perplexity.ai' },
+  make:       { icon:'⚙️', name:'Make.com', tag:'free', label:'FREE PLAN', why:'Visual automation builder. Connect your apps, automate repetitive workflows, and eliminate admin without coding.', cta:'Get Make Free →', url:'https://make.com' },
+  canva:      { icon:'🎨', name:'Canva AI', tag:'free', label:'FREE PLAN', why:'AI image generation, Magic Write, and Brand Kit. Produces professional visuals in minutes for any platform.', cta:'Try Canva Free →', url:'https://canva.com' },
+  surfer:     { icon:'🏄', name:'Surfer SEO', tag:'paid', label:'BEST FOR SEO', why:'Real-time content optimization against top-ranking pages. Write articles that rank, not just articles that exist.', cta:'Try Surfer →', url:'https://surferseo.com' },
+  otter:      { icon:'🎙️', name:'Otter.ai', tag:'free', label:'FREE PLAN', why:'Auto-transcribes meetings, calls, and interviews. Turns every client call into a searchable, summarized document.', cta:'Try Otter Free →', url:'https://otter.ai' },
+  bonsai:     { icon:'📄', name:'Bonsai', tag:'paid', label:'RECOMMENDED', why:'AI-assisted contracts, proposals, and invoices built for freelancers. Close clients faster with professional templates.', cta:'Try Bonsai →', url:'https://bonsai.com' },
+  cursor:     { icon:'💻', name:'Cursor', tag:'paid', label:'TOP FOR DEVS', why:'AI code editor that writes, explains, and refactors code. Delivers 3–5× productivity boost on real projects.', cta:'Try Cursor →', url:'https://cursor.sh' },
+  chatgpt:    { icon:'💬', name:'ChatGPT Plus', tag:'paid', label:'VERSATILE', why:'Best for brainstorming, ideation, and structured analysis. Use alongside Claude for diverse AI perspectives.', cta:'Get ChatGPT Plus →', url:'https://chat.openai.com' },
+};
+
+const RECS = {
+  writer:     { speed:['claude','perplexity','otter'],  quality:['claude','surfer','notion'],    scale:['claude','make','bonsai'],      income:['claude','bonsai','surfer']  },
+  designer:   { speed:['canva','claude','notion'],       quality:['canva','claude','chatgpt'],    scale:['canva','make','notion'],       income:['canva','bonsai','claude']   },
+  developer:  { speed:['cursor','claude','make'],        quality:['cursor','claude','chatgpt'],   scale:['cursor','make','notion'],      income:['cursor','bonsai','claude']  },
+  marketer:   { speed:['perplexity','surfer','claude'],  quality:['surfer','claude','chatgpt'],   scale:['make','surfer','canva'],       income:['surfer','claude','bonsai']  },
+  consultant: { speed:['claude','otter','notion'],       quality:['claude','perplexity','otter'], scale:['make','claude','bonsai'],      income:['bonsai','claude','otter']   },
+  operator:   { speed:['make','notion','claude'],        quality:['claude','notion','chatgpt'],   scale:['make','notion','otter'],       income:['make','bonsai','claude']    },
+};
+
+function ans(q, val) {
+  answers[q] = val;
+  document.getElementById('q'+q).classList.remove('show');
+  const steps = ['s1','s2','s3'];
+  document.getElementById(steps[q-1]).classList.add('done');
+  if (q < 3) {
+    document.getElementById('q'+(q+1)).classList.add('show');
+    if (q+1 <= 3) document.getElementById('s'+(q+1)).classList.add('active');
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  const prof = answers[1];
+  const priority = answers[3];
+  const toolIds = (RECS[prof] && RECS[prof][priority]) || ['claude','notion','make'];
+  const html = toolIds.map(id => {
+    const t = TOOLS[id];
+    return `<div class="tool-card">
+      <div class="tool-head">
+        <div class="tool-icon">${t.icon}</div>
+        <div>
+          <div class="tool-name">${t.name}</div>
+          <div class="tool-why">${t.why}</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag ${t.tag}">${t.tag === 'free' ? '✓ FREE PLAN' : '★ PAID'}</span>
+        <span class="tag top">${t.label}</span>
+      </div>
+      <a href="${t.url}" class="tool-cta" target="_blank">${t.cta}</a>
+    </div>`;
+  }).join('');
+  document.getElementById('tool-list').innerHTML = html;
+  document.getElementById('res-sub').textContent =
+    'Based on your profile: '+answers[1]+' focused on '+answers[3]+'. These 3 tools eliminate your biggest bottlenecks first.';
+  document.getElementById('results').classList.add('show');
+  document.getElementById('s3').classList.add('done');
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+
+function restart() {
+  answers = {};
+  ['q1','q2','q3'].forEach(id => document.getElementById(id).classList.remove('show'));
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('q1').classList.add('show');
+  ['s1','s2','s3'].forEach(id => {
+    document.getElementById(id).classList.remove('done','active');
+  });
+  document.getElementById('s1').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
